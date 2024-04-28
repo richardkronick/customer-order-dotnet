@@ -4,12 +4,6 @@ using Customer_Orders_C_.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
-// successfully send requests and add tests
-
-
-
-
 /*
  * TODO:
  *  - Create separate request objects, such as OrderRequest that doesn't include the id, and assign an guid within the route handler
