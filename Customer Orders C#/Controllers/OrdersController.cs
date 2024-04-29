@@ -9,13 +9,22 @@ using Microsoft.EntityFrameworkCore;
  *  - Create separate request objects, such as OrderRequest that doesn't include the id, and assign an guid within the route handler
  *  - Add more robust validation for order details and the products
  *  - Add logging and potentially some alerts
+ *  - Explore adding service classes, validation classes. If so, we'd probably add interfaces. Will this added complexity be needed long-term?
+ *  - What types of orders might we have? Could we need interfaces for models for DI, testing or polymorphism?
+ *  - Should we have a separate end point for canceling an item?
+ *      - Depends on the needs of the busines...
+ *      - What statuses will we have? Is "cancelled" just one of many?
+ *      - A single 'order update' endpoint centralizes logic and simplifies routing, but how complex is an order object?
+ *      - Is an "order update" really a single responsibility, or a group of them?
+ *      - How complex could an order cancellation get? Assuming we would also need logic for refunds, notifications, update the num in stock, etc.
+ *      - Perhaps explore separating: update order status, update order total, remote product, add product, etc.
  *  - Use an auth token for authentication and authorization
+ *  - Need to redesign OrderDetails.cs because the Quantity prop doesn't make sense as it is
  *  - Add validation to ensure that the number of items ordered is in fact in stock and handle a shortage
  *  - Add validation to only allow updates for certain order statuses
  *  - Add validation that the customer exists, and maybe to ensure we have all relevant data - or maybe we want to assume at this point we have it all?
- *  - Account for sales taxes
+ *  - Account for sales taxes, discounts, coupon codes
  *  - Consider alternatives to initializing the models - default values
- *  - Explore adding service classes, validation classes
  *  - Make test default methods more flexible
  *  - Add tests to cover all code paths
  *  - Remove instances of 'var' and replace with explicit types
